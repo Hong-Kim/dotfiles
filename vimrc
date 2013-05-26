@@ -1,5 +1,11 @@
 " Leader
-let mapleader = " "
+let mapleader = ","
+
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
+
+filetype plugin indent on
 
 set nocompatible  " Use Vim settings, rather then Vi settings
 set nobackup
@@ -8,20 +14,22 @@ set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitigno
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
+set showmode      " display current mode
 set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
+set laststatus=2  " always display the status line
+set autoread      " reload files changed outside vim
+set hidden        " allow buffers to exist in the background
+set backspace=indent,eol,start  "allow backspace in insert mode
+set hlsearch      " highlight serached word
+
+"Start scrolling when we're 8 lines away from margins
+set scrolloff=8
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
-
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
-
-filetype plugin indent on
 
 augroup vimrcEx
   au!
@@ -54,6 +62,7 @@ endif
 
 " Color scheme
 set background=dark
+let g:solarized_termcolors=16
 colorscheme solarized
 
 " Numbers
@@ -81,27 +90,9 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
-
 " Cucumber navigation commands
 autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
 autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -114,15 +105,19 @@ au BufRead,BufNewFile *.md setlocal spell
 " Automatically wrap at 80 characters for Markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
+" Treat .god files as ruby files
+au BufRead,BufNewFile *.god set filetype=ruby
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" Zero time delay when escaping from visual mode
+" FIXME: line number colors changed unexpectedly
+set timeoutlen=1000 ttimeoutlen=0
+
+" Remove whitespace before write
+au BufWritePre * :%s/\s\+$//e
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
