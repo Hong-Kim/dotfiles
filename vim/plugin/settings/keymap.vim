@@ -142,9 +142,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Yank text to the OS X clipboard
-noremap <leader>y "*y
-noremap <leader>yy "*Y
-
-" Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+" Easier system clipboard copy/paste
+map <silent> <Leader>y :w !pbcopy<CR><CR>
+map <silent> <Leader>p :r !pbpaste<CR>
