@@ -34,7 +34,7 @@
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
-  ff = only
+#   ff = only
 [user]
   name = Hong Kim
   email = honki91@gmail.com
