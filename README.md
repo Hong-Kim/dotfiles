@@ -1,120 +1,73 @@
-thoughtbot dotfiles
-===================
+Hong's Dotfiles
+===============
 
-Requirements
+Overview
+--------
+
+This dotfiles repo is a fork of [thoughtbot's
+dotfiles](https://github.com/thoughtbot/dotfiles).
+
+I chose to base my dotfiles on that of thoughtbot's b/c of the following reasons:
+
+* It can be used across all Unix-like environments (Not OSX dependent).
+* It assumes you use terminal vim (Not a GUI editor like macvim).
+* It only includes essential configurations and plugins (Unlike
+  [yadr](https://github.com/skwp/dotfiles) which my previous dotfiles where
+based on)
+
+Installation
 ------------
 
-Set zsh as your login shell.
+Clone this repo to any machine you intend to work (including remote machines).
+    git clone git://github.com/Hong-Kim/dotfiles.git
 
-    chsh -s /bin/zsh
-
-Install
--------
-
-Clone onto your laptop:
-
-    git clone git://github.com/thoughtbot/dotfiles.git
-
-(Or, [fork and keep your fork
-updated](http://robots.thoughtbot.com/post/5133345960)).
-
-Install:
-
+Then run the installation script:
     cd dotfiles
     ./install.sh
 
-This will create symlinks for config files in your home directory. If you
-include the line "DO NOT EDIT BELOW THIS LINE" anywhere in a config file, it
-will copy that file over instead of symlinking it, and it will leave
-everything above that line in your local config intact.
+This will create dotfile symlinks in your HOME directory, git clone vundle to
+the .vim/bundle/vundle directory, and use vundle to install all vim plugins.
 
-You can safely run `./install.sh` multiple times to update.
+Zsh is assumed (i.e. all shell configuration is done in `~/.zshrc`). Thus,
+switch to it, if not already:
+    chsh -s /bin/zsh
 
-Make your own customizations
-----------------------------
+If you do not have zsh installed, you must install it first using `brew` or
+`apt-get` depending on your OS. This is also true for tmux and vim. If you are on
+a linux machine and vim complains you do not have a ruby-supported version of
+vim, you should install vim-nox.
 
-Put your customizations at the top of files, separated by "DO NOT EDIT BELOW
-THIS LINE."
+Personal Settings
+-----------------
 
-For example, the top of your `~/.gitconfig` might look like this:
+Explanations for some of my personal settings:
 
-    [user]
-      name = Joe Ferris
-      email = jferris@thoughtbot.com
+* emacs-keybindings on the command line: Vim's modal editing is great, but not
+  when you are editing on the command line. You have no indication of whether
+  you are in insert-mode or normal-mode, which leads to many typos. As a previous
+  emacs user, emacs-keybindings are enough for my simple editing needs on the
+  command line.
+* `Ctrl+t` as my tmux prefix: `Ctrl+a` is used for
+  beginning-of-line cursor movement. So instead, I use `Ctrl+t` (t is a mnemonic
+  for tmux)
+* rbenv: I use rbenv. Running `~/.rbenv.sh` will install rbenv and the ruby
+  version 1.9.3-p392-railsexpress (originally written by
+  [crpdm](https://github.com/crpdm).
+* pretty git logging: Borrowed from Gary Bernhardt's
+  [.githelpers](https://github.com/garybernhardt/dotfiles/blob/master/.githelpers).
 
-    # DO NOT EDIT BELOW THIS LINE
+Settings/ideas stolen from [yadr](https://github.com/skwp/dotfiles) (almost
+everything in the `~/.vim/plugin/settings` directory):
 
-    [push]
-      default = current
+* solarized-dark colorscheme: I prefer it over the `github` colorscheme (used by
+  thoughtbot). Download and apply the [solarized-dark iTerm2
+theme](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
+* convenient keybindings: See the `~/.vim/plugin/settings/keymap.vim` file.
 
-The top of your `~/.zlogin` might look like this:
+Additional vim plugins used (see the `.vimrc.bundles` file for a complete list):
 
-    # Productivity
-    alias todo='$EDITOR ~/.todo'
-
-    # DO NOT EDIT BELOW THIS LINE
-
-    # recommended by brew doctor
-    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-What's in it?
--------------
-
-[vim](http://www.vim.org/) configuration:
-
-* [Ctrl-P](https://github.com/kien/ctrlp.vim) for fuzzy file/buffer/tag finding.
-* [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
-  Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
-  `:Rinvert` migrations, etc.
-* Run [RSpec](https://www.relishapp.com/rspec) specs from vim.
-* Set `<leader>` to a single space.
-* Switch between the last two files with space-space.
-* Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, and
-  HTML.
-* Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
-  available.
-* Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
-* Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
-* Use [Vundle](https://github.com/gmarik/vundle) to manage plugins.
-
-[tmux](http://robots.thoughtbot.com/post/2641409235/a-tmux-crash-course)
-configuration:
-
-* Improve color resolution.
-* Remove administrative debris (session name, hostname, time) in status bar.
-* Set prefix to `Ctrl+a` (like GNU screen).
-* Soften status bar color from harsh green to light gray.
-
-[git](http://git-scm.com/) configuration:
-
-* Adds a `create-branch` alias to create feature branches.
-* Adds a `delete-branch` alias to delete feature branches.
-* Adds a `merge-branch` alias to merge feature branches into master.
-
-Shell aliases and scripts:
-
-* `b` for `bundle`.
-* `g` with no arguments is `git status` and with arguments acts like `git`.
-* `git-churn` to show churn for the files changed in the branch.
-* `m` for `rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare`.
-* `mcd` to make a directory and change into it.
-* `rake` is `zeus rake` if using [Zeus](https://github.com/burke/zeus) on the
-  project in current directory.
-* `replace foo bar **/*.rb` to find and replace within a given list of files.
-* `rk` for `rake`.
-* `rspec` is `zeus rspec` if using Zeus on the project in current directory.
-* `tat` to attach to tmux session named the same as the current directory.
-* `v` for `$VISUAL`.
-
-Credits
--------
-
-Thank you, [contributors](https://github.com/thoughtbot/dotfiles/contributors)!
-
-![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
-
-Dotfiles is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.
-
-Dotfiles is © 2009-2013 thoughtbot, inc. It is free software and may be
-redistributed under the terms specified in the [LICENSE](LICENSE) file.
+* [lusty-explorer](http://www.vim.org/scripts/script.php?script_id=1890): I use
+  ctrlp most of the time, but still need a decent file/directory navigator once
+  in a while, and the `:e` command doesn't cut it.
+* vim-unimpared: I use it for the `[+<space>`, `]+<space>` commands that add
+  blank lines above and below the current line.
