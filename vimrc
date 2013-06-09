@@ -1,5 +1,5 @@
 " Leader
-let mapleader = ","
+let mapleader = " "
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles

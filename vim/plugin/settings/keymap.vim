@@ -6,56 +6,55 @@
 " alias yw to yank the entire word 'yank inner word'
 " even if the cursor is halfway inside the word
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
-nnoremap ,yw yiww
+nnoremap <leader>yw yiww
 
-" ,ow = 'overwrite word', replace a word with what's in the yank buffer
+" <leader>ow = 'overwrite word', replace a word with what's in the yank buffer
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
-nnoremap ,ow "_diwhp
+nnoremap <leader>ow "_diwhp
 
 "make Y consistent with C and D
 nnoremap Y y$
 
-" ,# Surround a word with #{ruby interpolation}
-map ,# ysiw#
-vmap ,# c#{<C-R>"}<ESC>
+" <leader># #{Surround} a word with #{ruby interpolation}
+vmap <leader># c#{<C-R>"}<ESC>
 
-" ," Surround a word with "quotes"
-map ," ysiw"
-vmap ," c"<C-R>""<ESC>
+" <leader>" Surround a word with "quotes"
+map <leader>" ysiw"
+vmap <leader>" c"<C-R>""<ESC>
 
-" ,' Surround a word with 'single quotes'
-map ,' ysiw'
-vmap ,' c'<C-R>"'<ESC>
+" <leader>' Surround a word with 'single quotes'
+map <leader>' ysiw'
+vmap <leader>' c'<C-R>"'<ESC>
 
-" ,) or ,( Surround a word with (parens)
+" <leader>) or <leader>( Surround a word with (parens)
 " The difference is in whether a space is put in
-map ,( ysiw(
-map ,) ysiw)
-vmap ,( c( <C-R>" )<ESC>
-vmap ,) c(<C-R>")<ESC>
+map <leader>( ysiw(
+map <leader>) ysiw)
+vmap <leader>( c( <C-R>" )<ESC>
+vmap <leader>) c(<C-R>")<ESC>
 
-" ,[ Surround a word with [brackets]
-map ,] ysiw]
-map ,[ ysiw[
-vmap ,[ c[ <C-R>" ]<ESC>
-vmap ,] c[<C-R>"]<ESC>
+" <leader>[ Surround a word with [brackets]
+map <leader>] ysiw]
+map <leader>[ ysiw[
+vmap <leader>[ c[ <C-R>" ]<ESC>
+vmap <leader>] c[<C-R>"]<ESC>
 
-" ,{ Surround a word with {braces}
-map ,} ysiw}
-map ,{ ysiw{
-vmap ,} c{ <C-R>" }<ESC>
-vmap ,{ c{<C-R>"}<ESC>
+" <leader>{ Surround a word with {braces}
+map <leader>} ysiw}
+map <leader>{ ysiw{
+vmap <leader>} c{ <C-R>" }<ESC>
+vmap <leader>{ c{<C-R>"}<ESC>
 
 " gary bernhardt's hashrocket
 imap <c-l> <space>=><space>
 
-"Go to last edit location with ,.
-nnoremap ,. '.
+"Go to last edit location with <leader>.
+nnoremap <leader>. '.
 
 "Move back and forth through previous and next buffers
-"with ,z and ,x
-nnoremap <silent> ,z :bp<CR>
-nnoremap <silent> ,x :bn<CR>
+"with <leader>z and <leader>x
+nnoremap <silent> <leader>z :bp<CR>
+nnoremap <silent> <leader>x :bn<CR>
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -79,20 +78,20 @@ imap <silent> <C-J> <%  %><Esc>2hi
 
 " copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
 " this is helpful to paste someone the path you're looking at
-nnoremap <silent> ,cf :let @* = expand("%:~")<CR>
-nnoremap <silent> ,cn :let @* = expand("%:t")<CR>
+nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
+nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
 
 "(v)im (c)ommand - execute current line as a vim command
-nmap <silent> ,vc yy:<C-f>p<C-c><CR>
+nmap <silent> <leader>vc yy:<C-f>p<C-c><CR>
 
 "(v)im (r)eload
-nmap <silent> ,vr :so %<CR>
+nmap <silent> <leader>vr :so %<CR>
 
-" Type ,hl to toggle highlighting on/off, and show current value.
-noremap ,hl :set hlsearch! hlsearch?<CR>
+" Type <leader>hl to toggle highlighting on/off, and show current value.
+noremap <leader>hl :set hlsearch! hlsearch?<CR>
 
 " Apple-* Highlight all occurrences of current word (like '*' but without moving)
 " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches
@@ -114,7 +113,7 @@ nmap <D-A> :Tabularize /
 vmap <D-A> :Tabularize /
 
 " Get the current highlight group. Useful for then remapping the color
-map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+map <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Commonly opened vim config files
 nmap <leader>v :e ~/.vimrc<CR>
@@ -126,15 +125,15 @@ imap jk <Esc>
 imap kj <Esc>
 
 " Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
+map <leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
 " vim-rspec mappings
-nnoremap <Leader>r :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <leader>r :call RunCurrentSpecFile()<CR>
+nnoremap <leader>s :call RunNearestSpec()<CR>
+nnoremap <leader>l :call RunLastSpec()<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -144,5 +143,5 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> Q :q<CR>
 
 " Easier system clipboard copy/paste
-map <silent> <Leader>y :w !pbcopy<CR><CR>
-map <silent> <Leader>p :r !pbpaste<CR>
+map <silent> <leader>y :w !pbcopy<CR><CR>
+map <silent> <leader>p :r !pbpaste<CR>

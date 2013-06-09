@@ -28,32 +28,29 @@ Then run the installation script:
 This will create dotfile symlinks in your HOME directory, clone `vundle` to
 the `~/.vim/bundle/vundle` directory, and use vundle to install all vim plugins.
 
-Zsh is assumed (i.e. all shell configuration is done in `~/.zshrc`). Thus,
-switch to it, if not already:
+Zsh is assumed (i.e. all shell configuration is done in `~/.zshrc`). Switch to
+it, if not already:
 
     chsh -s /bin/zsh
 
-If you do not have `zsh` installed, you must install it first using `brew` or
-`apt-get` depending on your OS. This is also true for `tmux` and `vim`. If you are on
-a linux machine and vim complains you do not have a ruby-supported version of
-vim, you should install `vim-nox`.
+If you do not have `zsh` installed, you must install it first, using `brew` or
+`apt-get` depending on your OS. This is also true for `tmux` and `vim`. If you
+are on a linux machine and vim complains you do not have a ruby-supported
+version of vim, you should install `vim-nox`.
 
 Personal Settings
 -----------------
 
 Explanations for some of my personal settings:
 
-* Emacs-keybindings on the command line: Vim's modal editing is great, but not
-  when you are editing on the command line. You have no indication of whether
-  you are in insert-mode or normal-mode, which leads to many typos. As a previous
-  emacs user, emacs-keybindings are enough for my simple editing needs on the
-  command line.
-* `Ctrl+t` as my tmux prefix: `Ctrl+a` is used for
-  beginning-of-line cursor movement. So instead, I use `Ctrl+t` (t is a mnemonic
-  for tmux)
-* Rbenv: I use rbenv. Running `~/.rbenv.sh` will install rbenv and the ruby
-  version 1.9.3-p392-railsexpress (originally written by
-  [crpdm](https://github.com/crpdm)).
+* Emacs-keybindings on the command line: Vim's modal editing isn't so great on
+  the command line. You have no indication of whether you are in insert-mode or
+  normal-mode, which leads to many typos.
+* `Ctrl+t` as my tmux prefix: `Ctrl+a` is used for beginning-of-line cursor
+  movement. So instead, I use `Ctrl+t` (t is a mnemonic for tmux)
+* Rbenv: I use rbenv. Running `~/.rbenv.sh`(originally written by
+  [crpdm](https://github.com/crpdm)) will install rbenv and the ruby version
+  1.9.3-p392-railsexpress.
 * Pretty git logging: Borrowed from Gary Bernhardt's
   [.githelpers](https://github.com/garybernhardt/dotfiles/blob/master/.githelpers).
 
