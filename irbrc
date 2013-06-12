@@ -1,3 +1,7 @@
+require 'irb/ext/save-history'
+IRB.conf[:SAVE_HISTORY] = 200
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
+
 class Object
   def re
     load File.expand_path("~/.irbrc")
