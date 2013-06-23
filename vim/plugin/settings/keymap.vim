@@ -143,5 +143,16 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> Q :q<CR>
 
 " Easier system clipboard copy/paste
-map <silent> <leader>y :w !pbcopy<CR><CR>
-map <silent> <leader>p :r !pbpaste<CR>
+vmap <silent> <leader>y :w !pbcopy<CR><CR>
+vmap <silent> <leader>p :r !pbpaste<CR>
+
+" Open the current GEM_PATH with lusty explorer
+map <leader>lg :LustyFilesystemExplorer ~/.rbenv/versions/1.9.3-p392-railsexpress/lib/ruby/gems/1.9.1/gems<CR>
+
+" Make Vim's command line behave like Emacs
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-d> <Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
