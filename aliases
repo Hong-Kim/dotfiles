@@ -33,3 +33,8 @@ alias m="migrate"
 alias rk="rake"
 alias s="rspec"
 alias z="zeus"
+
+# Tmux
+alias ta="tmux attach -t"
+alias tn="tmux new -s"
+alias tls="tmux ls"
