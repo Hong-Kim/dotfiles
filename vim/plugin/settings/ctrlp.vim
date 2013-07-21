@@ -22,16 +22,8 @@ nnoremap <silent> <leader>c :ClearCtrlPCache<cr>
 map <leader>jm :CtrlP app/models<CR>
 map <leader>jc :CtrlP app/controllers<CR>
 map <leader>jv :CtrlP app/views<CR>
-map <leader>jh :CtrlP app/helpers<CR>
-map <leader>jl :CtrlP lib<CR>
-map <leader>jp :CtrlP public<CR>
-map <leader>js :CtrlP spec<CR>
-map <leader>jf :CtrlP fast_spec<CR>
-map <leader>jd :CtrlP db<CR>
-map <leader>jC :CtrlP config<CR>
-map <leader>jV :CtrlP vendor<CR>
-map <leader>jF :CtrlP factories<CR>
-map <leader>jT :CtrlP test<CR>
+map <leader>jf :CtrlP features<CR>
+map <leader>js :CtrlP features/steps<CR>
 
 "Cmd-Shift-(M)ethod - jump to a method (tag in current file)
 "Ctrl-m is not good - it overrides behavior of Enter
