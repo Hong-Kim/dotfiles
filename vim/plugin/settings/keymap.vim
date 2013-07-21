@@ -153,3 +153,6 @@ cnoremap <C-f> <Right>
 cnoremap <C-d> <Delete>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
+
+" Easier paste toggle keybinding
+set pastetoggle=<F2>
