@@ -130,6 +130,9 @@ let &winheight = &lines * 8 / 10
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 
+" Consider _ as word boundaries
+set iskeyword-=_
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
