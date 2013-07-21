@@ -2,3 +2,4 @@ log
 tags
 tmp
 public/assets
+db/data.yml
