@@ -47,6 +47,10 @@ setopt CORRECT CORRECT_ALL
 # Enable extended globbing
 setopt EXTENDED_GLOB
 
+# Put /usr/local/bin ahead of /usr/bin
+export PATH=`echo $PATH | awk -v RS=: -v ORS=: '/\/usr\/local\/bin/ {next} {print}' | sed 's/:$//'`
+export PATH="/usr/local/bin:$PATH"
+
 # Use rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
