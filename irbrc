@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'irb/ext/save-history'
 IRB.conf[:SAVE_HISTORY] = 200
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
@@ -33,16 +34,13 @@ class Object
   def info(i)
     f = Resque::Failure.all(i)
     pp f
-    id = f['payload']['args'][1]
-    type = f['payload']['args'][2]
-    m = Movie.find(id)
-    if type == "poster"
-      puts m.poster
-      puts m.poster.ib
-    elsif type == "stillcut"
-      puts m.stillcut
-      puts m.stillcut.n_v1in1
-    end
+    nil
+  end
+
+  def peek(queue_name = 'parse')
+    queued_tasks = Resque.peek(queue_name, 0, 100000)
+    queued_tasks.each { |t| puts t.inspect }
+    puts "total: #{queued_tasks.count}"
     nil
   end
 
@@ -72,9 +70,10 @@ class Object
     count = Resque::Failure.count
 
     (idx..count-1).to_a.reverse.each do |i|
-      remove(i)
+      Resque::Failure.remove(i)
       puts "remove: #{i}..."
     end
     nil
   end
 end
+
