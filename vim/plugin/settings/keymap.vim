@@ -140,7 +140,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> Q :q<CR>
 
 " Easier system clipboard copy/paste
-vmap <silent> <leader>y :w !pbcopy<CR><CR>
+vmap <silent> <leader>y "*y
 vmap <silent> <leader>p :r !pbpaste<CR>
 
 " Open the current GEM_PATH with lusty explorer
