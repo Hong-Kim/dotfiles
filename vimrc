@@ -110,6 +110,9 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 " Treat .god files as ruby files
 au BufRead,BufNewFile *.god set filetype=ruby
 
+" Resize splits to equal width and height when window is resized
+au VimResized * wincmd =
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
