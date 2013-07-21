@@ -32,5 +32,12 @@ Bundle 'vim-scripts/tComment'
 Bundle 'xenoterracide/html.vim'
 Bundle 'sjbach/lusty'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-eunuch'
+Bundle 'rking/ag.vim'
+Bundle 'Shougo/neocomplcache'
+
+" HACK: manually add neocomplcache to runtime path
+set rtp+=~/.vim/bundle/neocomplcache
 
 filetype on
