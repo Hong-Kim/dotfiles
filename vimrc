@@ -21,6 +21,7 @@ set autoread      " reload files changed outside vim
 set hidden        " allow buffers to exist in the background
 set backspace=indent,eol,start  "allow backspace in insert mode
 set hlsearch      " highlight serached word
+set ignorecase    " ignore case in search
 set smartcase     " acknowledge case only when searched with capital letters
 set gdefault      " substitute globally by default
 
