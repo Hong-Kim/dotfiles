@@ -126,7 +126,7 @@ set timeoutlen=1000 ttimeoutlen=0
 au BufWritePre * :%s/\s\+$//e
 
 " Window with focus should have 80% of total height
-let &winheight = &lines * 8 / 10
+" let &winheight = &lines * 8 / 10
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
