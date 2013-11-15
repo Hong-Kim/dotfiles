@@ -118,8 +118,9 @@ nmap <leader>vb :e ~/dotfiles/vimrc.bundles<CR>
 nmap <leader>vk :e ~/dotfiles/vim/plugin/settings/keymap.vim<CR>
 
 " Could use instead of <ESC>
-imap jk <Esc>
-imap kj <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
+inoremap <Esc> <nop>
 
 " Index ctags from any project, including those outside Rails
 map <leader>ct :!ctags -R .<CR>
