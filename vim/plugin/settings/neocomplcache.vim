@@ -1,5 +1,7 @@
-let g:neocomplcache_enable_at_startup = 1
-" inoremap <expr><CR> neocomplcache#close_popup()
+" let g:neocomplcache_enable_at_startup = 1
+" HACK: manual enable at startup b/c the line above isn't working
+call neocomplcache#init#enable()
+
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 
