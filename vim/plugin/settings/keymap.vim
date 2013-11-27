@@ -122,6 +122,8 @@ inoremap jk <Esc>
 inoremap kj <Esc>
 inoremap <Esc> <nop>
 
+map <silent> <leader><CR> :w<CR>
+
 " Index ctags from any project, including those outside Rails
 map <leader>ct :!ctags -R .<CR>
 
