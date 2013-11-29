@@ -13,9 +13,6 @@ nnoremap <silent> <leader>t :CtrlPMixed<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <C-b> :CtrlPBuffer<cr>
 
-" <leader>c to clear the cache
-nnoremap <silent> <leader>c :ClearCtrlPCache<cr>
-
 "Cmd-Shift-(M)ethod - jump to a method (tag in current file)
 "Ctrl-m is not good - it overrides behavior of Enter
 nnoremap <silent> <leader>m :CtrlPBufTag<CR>

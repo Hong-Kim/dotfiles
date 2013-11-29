@@ -75,13 +75,18 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" Use Ag over grep if available
 if executable('ag')
- " Use Ag over Grep
  set grepprg=ag\ --nogroup\ --nocolor
 
  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+ " ag is fast enough that CtrlP doesn't need to cache
+ let g:ctrlp_use_caching = 0
+else
+  " Fall back to the custom git file search & caching method
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
 
 " Color scheme
