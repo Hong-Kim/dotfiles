@@ -35,7 +35,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
 endif
 
 augroup vimrcEx
-  au!
+  autocmd!
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
@@ -47,6 +47,24 @@ augroup vimrcEx
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+
+  " Set syntax highlighting for specific file types
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+  " Enable spellchecking for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal spell
+
+  " Automatically wrap at 80 characters for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+  " Treat .god files as ruby files
+  autocmd BufRead,BufNewFile *.god set filetype=ruby
+
+  " Resize splits to equal width and height when window is resized
+  autocmd VimResized * wincmd =
+
+  " Remove whitespace before write
+  autocmd BufWritePre * :%s/\s\+$//e
 augroup END
 
 " Softtabs, 2 spaces
@@ -96,21 +114,6 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" Set syntax highlighting for specific file types
-au BufRead,BufNewFile *.md set filetype=markdown
-
-" Enable spellchecking for Markdown
-au BufRead,BufNewFile *.md setlocal spell
-
-" Automatically wrap at 80 characters for Markdown
-au BufRead,BufNewFile *.md setlocal textwidth=80
-
-" Treat .god files as ruby files
-au BufRead,BufNewFile *.god set filetype=ruby
-
-" Resize splits to equal width and height when window is resized
-au VimResized * wincmd =
-
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -118,9 +121,6 @@ set splitright
 " Zero time delay when escaping from visual mode
 " FIXME: line number colors changed unexpectedly
 set timeoutlen=1000 ttimeoutlen=0
-
-" Remove whitespace before write
-au BufWritePre * :%s/\s\+$//e
 
 " Window with focus should have 80% of total height
 " let &winheight = &lines * 8 / 10
