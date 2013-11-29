@@ -17,14 +17,6 @@ nnoremap <silent> <C-b> :CtrlPBuffer<cr>
 " <leader>c to clear the cache
 nnoremap <silent> <leader>c :ClearCtrlPCache<cr>
 
-" Open CtrlP starting from a particular path, making it much
-" more likely to find the correct thing first. mnemonic 'jump to [something]'
-map <leader>jm :CtrlP app/models<CR>
-map <leader>jc :CtrlP app/controllers<CR>
-map <leader>jv :CtrlP app/views<CR>
-map <leader>jf :CtrlP features<CR>
-map <leader>js :CtrlP features/steps<CR>
-
 "Cmd-Shift-(M)ethod - jump to a method (tag in current file)
 "Ctrl-m is not good - it overrides behavior of Enter
 nnoremap <silent> <leader>m :CtrlPBufTag<CR>

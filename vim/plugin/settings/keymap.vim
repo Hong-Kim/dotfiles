@@ -1,8 +1,7 @@
 " ========================================
 " General vim sanity improvements
 " ========================================
-"
-"
+
 " alias yw to yank the entire word 'yank inner word'
 " even if the cursor is halfway inside the word
 " FIXME: will not properly repeat when you use a dot (tie into repeat.vim)
@@ -14,36 +13,6 @@ nnoremap <leader>ow "_diwhp
 
 "make Y consistent with C and D
 nnoremap Y y$
-
-" <leader># #{Surround} a word with #{ruby interpolation}
-vmap <leader># c#{<C-R>"}<ESC>
-
-" <leader>" Surround a word with "quotes"
-map <leader>" ysiw"
-vmap <leader>" c"<C-R>""<ESC>
-
-" <leader>' Surround a word with 'single quotes'
-map <leader>' ysiw'
-vmap <leader>' c'<C-R>"'<ESC>
-
-" <leader>) or <leader>( Surround a word with (parens)
-" The difference is in whether a space is put in
-map <leader>( ysiw(
-map <leader>) ysiw)
-vmap <leader>( c( <C-R>" )<ESC>
-vmap <leader>) c(<C-R>")<ESC>
-
-" <leader>[ Surround a word with [brackets]
-map <leader>] ysiw]
-map <leader>[ ysiw[
-vmap <leader>[ c[ <C-R>" ]<ESC>
-vmap <leader>] c[<C-R>"]<ESC>
-
-" <leader>{ Surround a word with {braces}
-map <leader>} ysiw}
-map <leader>{ ysiw{
-vmap <leader>} c{ <C-R>" }<ESC>
-vmap <leader>{ c{<C-R>"}<ESC>
 
 "Go to last edit location with <leader>.
 nnoremap <leader>. '.
@@ -64,10 +33,10 @@ nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
 
 " create <%= foo %> erb tags using Ctrl-k in edit mode
-imap <silent> <C-K> <%=  %><Esc>2hi
+" imap <silent> <C-K> <%=  %><Esc>2hi
 
 " create <%= foo %> erb tags using Ctrl-j in edit mode
-imap <silent> <C-J> <%  %><Esc>2hi
+" imap <silent> <C-J> <%  %><Esc>2hi
 
 " ============================
 " Shortcuts for everyday tasks
@@ -81,14 +50,12 @@ nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
 
-"(v)im (c)ommand - execute current line as a vim command
-nmap <silent> <leader>vc yy:<C-f>p<C-c><CR>
-
-"(v)im (r)eload
-nmap <silent> <leader>vr :so %<CR>
-
-" Type <leader>hl to toggle highlighting on/off, and show current value.
-noremap <leader>hl :set hlsearch! hlsearch?<CR>
+"Double tapping // is often tedious
+autocmd InsertEnter * set nohlsearch
+noremap n :set hlsearch<cr>n
+noremap N :set hlsearch<cr>N
+noremap / :set hlsearch<cr>/
+noremap ? :set hlsearch<cr>?
 
 " Apple-* Highlight all occurrences of current word (like '*' but without moving)
 " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches
@@ -109,9 +76,6 @@ nnoremap ` '
 nmap <D-A> :Tabularize /
 vmap <D-A> :Tabularize /
 
-" Get the current highlight group. Useful for then remapping the color
-map <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
-
 " Commonly opened vim config files
 nmap <leader>v :e ~/.vimrc<CR>
 nmap <leader>vb :e ~/dotfiles/vimrc.bundles<CR>
@@ -122,6 +86,7 @@ inoremap jk <Esc>
 inoremap kj <Esc>
 inoremap <Esc> <nop>
 
+" Saving should be easier
 map <silent> <leader><CR> :w<CR>
 
 " Index ctags from any project, including those outside Rails
@@ -129,11 +94,6 @@ map <leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
-
-" vim-rspec mappings
-nnoremap <leader>r :call RunCurrentSpecFile()<CR>
-nnoremap <leader>s :call RunNearestSpec()<CR>
-nnoremap <leader>l :call RunLastSpec()<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
