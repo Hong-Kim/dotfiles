@@ -54,15 +54,15 @@ Explanations for some of my personal settings:
 * Pretty git logging: Borrowed from Gary Bernhardt's
   [.githelpers](https://github.com/garybernhardt/dotfiles/blob/master/.githelpers).
 
-Settings/ideas stolen from [yadr](https://github.com/skwp/dotfiles) (almost
-everything in the `~/.vim/plugin/settings` directory):
+Settings/ideas stolen from [yadr](https://github.com/skwp/dotfiles) (mostly
+located in the `~/.vim/plugin/settings` directory):
 
 * Solarized-dark colorscheme: I prefer it over the `github` colorscheme (used by
   thoughtbot). Download and apply the [solarized-dark iTerm2
 theme](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
 * Convenient keybindings: See the `~/.vim/plugin/settings/keymap.vim` file.
 
-Additional vim plugins used (see the `.vimrc.bundles` file for a complete list):
+Additional vim plugins use (see the `.vimrc.bundles` file for a complete list):
 
 * [Lusty-explorer](http://www.vim.org/scripts/script.php?script_id=1890): I use
   ctrlp most of the time, but still need a decent file/directory navigator once
