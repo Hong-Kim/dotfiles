@@ -48,7 +48,7 @@ nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
 nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 
 "Clear current search highlight by double tapping //
-nmap <silent> // :nohlsearch<CR>
+nnoremap <silent> // :nohlsearch<CR>
 
 "Double tapping // is often tedious
 autocmd InsertEnter * set nohlsearch
@@ -69,28 +69,24 @@ nnoremap <D-*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nnoremap ' `
 nnoremap ` '
 
-" ============================
-" Tabularize - alignment
-" ============================
-" Hit Cmd-Shift-A then type a character you want to align by
-nmap <D-A> :Tabularize /
-vmap <D-A> :Tabularize /
-
 " Commonly opened vim config files
-nmap <leader>v :e ~/.vimrc<CR>
-nmap <leader>vb :e ~/dotfiles/vimrc.bundles<CR>
-nmap <leader>vk :e ~/dotfiles/vim/plugin/settings/keymap.vim<CR>
+nnoremap <leader>v :e ~/.vimrc<CR>
+nnoremap <leader>vb :e ~/dotfiles/vimrc.bundles<CR>
+nnoremap <leader>vk :e ~/dotfiles/vim/plugin/settings/keymap.vim<CR>
 
 " Could use instead of <ESC>
 inoremap jk <Esc>
 inoremap kj <Esc>
 inoremap <Esc> <nop>
 
+cnoremap jk <Esc>
+cnoremap kj <Esc>
+
 " Saving should be easier
-map <silent> <leader><CR> :w<CR>
+nnoremap <silent> <leader><CR> :w<CR>
 
 " Index ctags from any project, including those outside Rails
-map <leader>ct :!ctags -R .<CR>
+nnoremap <leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -103,11 +99,11 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> Q :q<CR>
 
 " Easier system clipboard copy/paste
-vmap <silent> <leader>y "*y
-vmap <silent> <leader>p :r !pbpaste<CR>
+vnoremap <silent> <leader>y "*y
+vnoremap <silent> <leader>p :r !pbpaste<CR>
 
 " Open the current GEM_PATH with lusty explorer
-map <leader>lg :LustyFilesystemExplorer ~/.rbenv/versions/1.9.3-p392-railsexpress/lib/ruby/gems/1.9.1/gems<CR>
+nnoremap <leader>lg :LustyFilesystemExplorer ~/.rbenv/versions/1.9.3-p392-railsexpress/lib/ruby/gems/1.9.1/gems<CR>
 
 " Make Vim's command line behave like Emacs
 cnoremap <C-a> <Home>
@@ -119,3 +115,7 @@ cnoremap <Esc>f <S-Right>
 
 " Easier paste toggle keybinding
 set pastetoggle=<F2>
+
+" Easier beginning/end of line movement
+nnoremap H ^
+nnoremap L $
