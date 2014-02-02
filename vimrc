@@ -95,8 +95,17 @@ let g:solarized_termcolors=16
 colorscheme solarized
 
 " Numbers
-set number
+set relativenumber
 set numberwidth=5
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
 
 " Snippets are activated by Shift+Tab
 let g:snippetsEmu_key = "<S-Tab>"
