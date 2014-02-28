@@ -51,3 +51,6 @@ export PATH="/usr/local/bin:$PATH"
 # Use rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Add Haskell binaries to PATH
+export PATH="$HOME/Library/Haskell/bin:$PATH
