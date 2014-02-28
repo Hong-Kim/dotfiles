@@ -41,6 +41,9 @@ setopt cdablevars
 # Enable extended globbing
 setopt EXTENDED_GLOB
 
+# Use nvm
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+
 # Put /usr/local/bin ahead of /usr/bin
 export PATH=`echo $PATH | awk -v RS=: -v ORS=: '/\/usr\/local\/bin/ {next} {print}' | sed 's/:$//'`
 export PATH="/usr/local/bin:$PATH"
