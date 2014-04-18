@@ -152,3 +152,8 @@ set iskeyword-=_
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" TODO: 
+" tab complete 하다가  "(" 있을 때 튕기는 것
+" 문단 선택 [ V ] 콤보를 한방에
+" 폴더 만드는 것

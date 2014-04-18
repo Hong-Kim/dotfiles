@@ -3,11 +3,16 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(blink-cursor-mode 0)
 
 ;; ui settings
 (global-linum-mode t)
 (column-number-mode)
 (show-paren-mode)
+
+;; highlight code that goes over column 80 characters
+(setq whitespace-line-column 80)
+(setq whitespace-style '(face lines-tail trailing))
 
 ;; color theme
 (load-theme 'solarized-dark t)
@@ -42,3 +47,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (provide 'my-settings)
+
+;; TODO
+;; - Customize M-; so that when run without active region, comment current line
+;; - Get to work on the terminal
