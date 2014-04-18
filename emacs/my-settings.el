@@ -5,6 +5,10 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
 
+;; store all backup files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+
 ;; ui settings
 (global-linum-mode t)
 (column-number-mode)

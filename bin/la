@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# vertically print filenames only (including dotfiles)
+
+ls -lA | awk '{print $9}' | awk '/./'
