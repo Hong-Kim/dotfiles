@@ -1,0 +1,5 @@
+# Vertically print filenames only (including dotfiles)
+
+function la() {
+  ls -lA | awk '{print $9}' | awk '/./'
+}

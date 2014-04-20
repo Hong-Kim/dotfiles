@@ -1,0 +1,5 @@
+# Vertically print filenames only
+
+function l() {
+  ls -l | awk '{print $9}' | awk '/./'
+}

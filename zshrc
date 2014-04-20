@@ -44,13 +44,20 @@ setopt EXTENDED_GLOB
 # Use nvm
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+       	PATH="$1:$PATH"
+    fi
+}
+
 # Put /usr/local/bin ahead of /usr/bin
 export PATH=`echo $PATH | awk -v RS=: -v ORS=: '/\/usr\/local\/bin/ {next} {print}' | sed 's/:$//'`
-export PATH="/usr/local/bin:$PATH"
+pathadd /usr/local/bin
 
 # Use rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
+pathadd $HOME/.rbenv/bin
 eval "$(rbenv init -)"
 
 # Add Haskell binaries to PATH
-export PATH="$HOME/.cabal/bin:$HOME/Library/Haskell/bin:$PATH"
+pathadd $HOME/Library/Haskell/bin
+pathadd $HOME/.cabal/bin
