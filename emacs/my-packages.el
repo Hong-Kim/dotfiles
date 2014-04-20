@@ -15,7 +15,8 @@
     haskell-mode
     whole-line-or-region
     iedit
-    projectile)
+    projectile
+    flx-ido)
   "A list of packages to ensure are installed at launch.")
 
 (defun my-packages-installed-p ()
@@ -42,5 +43,6 @@
 (ac-config-default)
 (whole-line-or-region-mode t)
 (projectile-global-mode)
+(flx-ido-mode +1)
 
 (provide 'my-packages)

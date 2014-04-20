@@ -61,7 +61,27 @@
       (message "Deleted file %s" filename)))
   (kill-buffer))
 
+(defun text-scale-laptop ()
+  (interactive)
+  (set-face-attribute 'default nil :family "Monaco" :height 120))
+
+(defun text-scale-desktop ()
+  (interactive)
+  (set-face-attribute 'default nil :family "Monaco" :height 140))
+
 (defalias 'qrr 'query-replace-regexp)
 (defalias 'ar 'align-regexp)
+
+(defadvice ido-find-file (after find-file-sudo activate)
+  "Find file as root if necessary."
+  (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+;; Automatically save on buffer/windows switches
+(defadvice switch-to-buffer (before save-buffer-now activate)
+  (when buffer-file-name (save-buffer)))
+(defadvice other-window (before other-window-now activate)
+  (when buffer-file-name (save-buffer)))
 
 (provide 'my-functions)
