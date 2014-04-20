@@ -44,20 +44,25 @@ setopt EXTENDED_GLOB
 # Use nvm
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
+# Add path to the front of PATH, removing its previous occurrence if necessary
 pathadd() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-       	PATH="$1:$PATH"
+    if [ -d "$1" ]; then
+	local P=`echo $1 | sed 's_/_\\\/_g'`
+	PATH=$1:`echo $PATH | awk -v RS=: -v ORS=: "/$P/ {next} {print}" | sed 's/:$//'`
     fi
 }
 
 # Put /usr/local/bin ahead of /usr/bin
-export PATH=`echo $PATH | awk -v RS=: -v ORS=: '/\/usr\/local\/bin/ {next} {print}' | sed 's/:$//'`
 pathadd /usr/local/bin
 
 # Use rbenv
 pathadd $HOME/.rbenv/bin
+pathadd $HOME/.rbenv/shims
 eval "$(rbenv init -)"
 
 # Add Haskell binaries to PATH
 pathadd $HOME/Library/Haskell/bin
 pathadd $HOME/.cabal/bin
+
+# Add the Heroku Toolbelt to PATH
+pathadd /usr/local/heroku/bin
