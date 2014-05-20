@@ -4,6 +4,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode 0)
+(setq-default indent-tabs-mode nil)
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
@@ -33,7 +34,7 @@
     (set-default-font
      "-outline-Consolas-normal-r-normal-normal-14-97-96-96-c-*-iso8859-1")))
 (if (eq system-type 'darwin)
-    (set-face-attribute 'default nil :family "Monaco" :height 120))
+    (set-face-attribute 'default nil :family "Monaco" :height 140))
 
 ;; swap left option and cmd for Mac
 (if (eq system-type 'darwin)
@@ -42,7 +43,7 @@
     (setq mac-command-modifier 'meta)))
 
 ;; cleanup buffer before save
-(add-hook 'before-save-hook 'whitespace-cleanup nil t)
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; C-l should actually clear the shell buffer
 (add-hook 'comint-mode-hook

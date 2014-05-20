@@ -36,6 +36,10 @@
 (define-key my-keys-minor-mode-map (kbd "C-;") 'iedit-mode)
 (define-key my-keys-minor-mode-map (kbd "C-t") 'projectile-find-file)
 
+;; adjust text scale to desktop/laptop
+(define-key my-keys-minor-mode-map (kbd "C-x C-+") 'text-scale-desktop)
+(define-key my-keys-minor-mode-map (kbd "C-x C--") 'text-scale-laptop)
+
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
   t " my-keys" 'my-keys-minor-mode-map)

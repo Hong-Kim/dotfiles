@@ -16,7 +16,8 @@
     whole-line-or-region
     iedit
     projectile
-    flx-ido)
+    flx-ido
+    scss-mode)
   "A list of packages to ensure are installed at launch.")
 
 (defun my-packages-installed-p ()
@@ -44,5 +45,7 @@
 (whole-line-or-region-mode t)
 (projectile-global-mode)
 (flx-ido-mode +1)
+(setq scss-compile-at-save nil)
+(setq haskell-program-name "ghci")
 
 (provide 'my-packages)
