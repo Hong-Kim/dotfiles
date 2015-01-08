@@ -3,3 +3,4 @@ tags
 tmp
 public/assets
 db/data.yml
+node_modules
