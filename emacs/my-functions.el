@@ -79,9 +79,9 @@
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 ;; Automatically save on buffer/windows switches
-(defadvice switch-to-buffer (before save-buffer-now activate)
-  (when buffer-file-name (save-buffer)))
-(defadvice other-window (before other-window-now activate)
-  (when buffer-file-name (save-buffer)))
+;; (defadvice switch-to-buffer (before save-buffer-now activate)
+;;   (when buffer-file-name (save-buffer)))
+;; (defadvice other-window (before other-window-now activate)
+;;   (when buffer-file-name (save-buffer)))
 
 (provide 'my-functions)
