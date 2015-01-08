@@ -9,7 +9,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-c C-m") 'smex)
 
 ;; soften scroll up/down to 10 lines
-(define-key my-keys-minor-mode-map (kbd "C-v") 
+(define-key my-keys-minor-mode-map (kbd "C-v")
   '(lambda () "scroll up 10 lines" (interactive) (scroll-up 10)))
 (define-key my-keys-minor-mode-map (kbd "M-v")
   '(lambda () "scroll down 10 lines" (interactive) (scroll-down 20)))
@@ -21,7 +21,7 @@
   (other-window -1))
 (define-key my-keys-minor-mode-map (kbd "M-o") 'prev-window)
 
-;; window management convenience 
+;; window management convenience
 (define-key my-keys-minor-mode-map (kbd "C-c C-c") 'clone-window)
 (define-key my-keys-minor-mode-map (kbd "C-c s") 'swap-windows)
 
@@ -33,7 +33,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-.") 'repeat)
 (define-key my-keys-minor-mode-map (kbd "C-?") 'redo)
 (define-key my-keys-minor-mode-map (kbd "M-s") 'replace-string)
-(define-key my-keys-minor-mode-map (kbd "C-;") 'iedit-mode)
+;; (define-key my-keys-minor-mode-map (kbd "C-;") 'iedit-mode)
 (define-key my-keys-minor-mode-map (kbd "C-t") 'projectile-find-file)
 
 ;; adjust text scale to desktop/laptop
