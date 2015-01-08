@@ -12,3 +12,6 @@ alias tls="tmux ls"
 # Mac
 alias dwn="cd ~/Downloads"
 alias dv="cd ~/dev"
+
+# Dev
+alias cfa="cd ~/dev/labs/common-funding-application; virtualenv venv; source venv/bin/activate"
