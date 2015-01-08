@@ -9,3 +9,6 @@ tmp/**/*
 !tmp/cache/.keep
 zeus.json
 *~
+.agignore
+node_modules
+html

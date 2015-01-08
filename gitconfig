@@ -27,6 +27,8 @@
   excludesfile = ~/.gitignore
   autocrlf = input
   editor = vim
+  precomposeunicode = true
+  quotepath = false
 [merge]
 #   ff = only
 [user]
