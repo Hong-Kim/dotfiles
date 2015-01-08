@@ -12,9 +12,7 @@
     solarized-theme
     redo+
     auto-complete
-    haskell-mode
     whole-line-or-region
-    iedit
     projectile
     flx-ido
     scss-mode)
@@ -46,6 +44,5 @@
 (projectile-global-mode)
 (flx-ido-mode +1)
 (setq scss-compile-at-save nil)
-(setq haskell-program-name "ghci")
 
 (provide 'my-packages)

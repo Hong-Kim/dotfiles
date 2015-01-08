@@ -34,7 +34,7 @@
     (set-default-font
      "-outline-Consolas-normal-r-normal-normal-14-97-96-96-c-*-iso8859-1")))
 (if (eq system-type 'darwin)
-    (set-face-attribute 'default nil :family "Monaco" :height 140))
+    (set-face-attribute 'default nil :family "Monaco" :height 120))
 
 ;; swap left option and cmd for Mac
 (if (eq system-type 'darwin)
@@ -48,10 +48,6 @@
 ;; C-l should actually clear the shell buffer
 (add-hook 'comint-mode-hook
 	  (lambda () (define-key comint-mode-map (kbd "C-l") 'shell-clear)))
-
-;; haskell settings
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (provide 'my-settings)
 
