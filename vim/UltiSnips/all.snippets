@@ -1,0 +1,42 @@
+snippet "react" "boilerplate for react component" r
+import React, { Component } from 'react';
+
+export default class ${1:XXX} extends Component {
+  render() {
+    const styles = {
+      container: {
+      }
+    };
+
+    return (
+      <div style={styles.container}>
+        $0
+      </div>
+    );
+  }
+}
+endsnippet
+
+snippet "import" "component import" r
+import ${1:Component} from './$1';
+endsnippet
+
+snippet "cons" "constructor" r
+constructor(props) {
+  super(props);
+  this.state = {$0
+}
+
+endsnippet
+
+snippet "clog" "console log" r
+console.log($0
+endsnippet
+
+snippet "pr" "this.props" r
+this.props$0
+endsnippet
+
+snippet "st" "this.state" r
+this.state$0
+endsnippet
