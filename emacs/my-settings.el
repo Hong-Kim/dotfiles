@@ -49,6 +49,9 @@
 (add-hook 'comint-mode-hook
 	  (lambda () (define-key comint-mode-map (kbd "C-l") 'shell-clear)))
 
+;; display tab as 4 spaces
+(setq tab-width 4)
+
 (provide 'my-settings)
 
 ;; TODO
