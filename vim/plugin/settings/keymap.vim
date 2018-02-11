@@ -119,3 +119,6 @@ set pastetoggle=<F2>
 " Easier beginning/end of line movement
 nnoremap H ^
 nnoremap L $
+
+" Clone current window to the other pane
+nnoremap <C-c><C-c> <C-w>o<C-w>v
