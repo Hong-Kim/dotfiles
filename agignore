@@ -1,6 +1,9 @@
 log
 tags
 tmp
-public/assets
+public/*
 db/data.yml
 node_modules
+vendor
+db/*
+dst
