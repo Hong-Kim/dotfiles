@@ -24,6 +24,7 @@ set hlsearch      " highlight serached word
 set ignorecase    " ignore case in search
 set smartcase     " acknowledge case only when searched with capital letters
 set gdefault      " substitute globally by default
+set scroll=15     " scroll 15 lines at a time
 
 "Start scrolling when we're 8 lines away from margins
 set scrolloff=8
@@ -59,6 +60,10 @@ augroup vimrcEx
 
   " Treat .god files as ruby files
   autocmd BufRead,BufNewFile *.god set filetype=ruby
+
+  autocmd BufRead,BufNewFile *.coffee set filetype=coffee
+
+  autocmd BufRead,BufNewFile *.json set filetype=json
 
   " Resize splits to equal width and height when window is resized
   autocmd VimResized * wincmd =
@@ -131,6 +136,8 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
+let syntastic_mode_map = { 'passive_filetypes': ['html'] }
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -153,7 +160,33 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-" TODO: 
+" Magical script that liberates me from having to set paste mode.
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+let g:UltiSnipsExpandTrigger= "<c-k>"
+
+let g:neocomplete#enable_at_startup = 1
+
+let g:jsx_ext_required = 0
+
+" TODO:
 " tab complete 하다가  "(" 있을 때 튕기는 것
 " 문단 선택 [ V ] 콤보를 한방에
 " 폴더 만드는 것
