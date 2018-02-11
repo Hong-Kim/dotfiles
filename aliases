@@ -14,4 +14,5 @@ alias dwn="cd ~/Downloads"
 alias dv="cd ~/dev"
 
 # Dev
-alias cfa="cd ~/dev/labs/common-funding-application; virtualenv venv; source venv/bin/activate"
+alias gph="git push heroku master"
+alias fbd="npm run build; firebase deploy"
